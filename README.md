@@ -2,9 +2,18 @@
 
 FontoGo is an HTML-first font workspace with a Python launcher and an emerging UI-independent Python core. This is an early-stage project; see limitations below before using it for production fonts.
 
-## Run the UI
+## Run the desktop app (recommended)
 
-Requirements: Python 3.10+ and Git (Git is optional for serving, but needed for self-update).
+Requirements: Python 3.10+ and dependencies from `requirements.txt`.
+
+```bash
+python -m pip install -r requirements.txt
+python desktop.py
+```
+
+The Qt desktop shell provides a native window, right-click context menu and native clipboard access. While a glyph editor is open, use the context menu item **Вставить вектор из буфера** or press Ctrl/Cmd+V. SVG paths and common SVG primitives are imported as editable objects. Complex transforms, styles, filters and clipping may not be preserved exactly; raster images are not converted into outlines.
+
+## Run the browser prototype (optional)
 
 ```bash
 python launcher.py
