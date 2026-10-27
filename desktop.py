@@ -6,7 +6,7 @@ import os
 import sys
 from pathlib import Path
 
-from PySide6.QtCore import QUrl, Qt, Slot
+from PySide6.QtCore import QObject, QUrl, Qt, Slot
 from PySide6.QtGui import QAction, QKeySequence
 from PySide6.QtWidgets import QApplication, QMainWindow, QMenu, QMessageBox
 from PySide6.QtWebEngineCore import QWebEnginePage
@@ -16,9 +16,10 @@ from PySide6.QtWebChannel import QWebChannel
 ROOT = Path(__file__).resolve().parent
 
 
-class Bridge:
+class Bridge(QObject):
     """Small, explicit bridge from the native clipboard to the web editor."""
     def __init__(self, window: "FontoGoWindow"):
+        super().__init__(window)
         self.window = window
 
     @Slot()
